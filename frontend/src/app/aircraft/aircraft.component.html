@@ -1,0 +1,59 @@
+
+  <div class="container">
+    <div class="title">
+      <img src="../../assets/images/Screenshot (181).png" width="150px" height="50px">
+    </div>
+    <div class="navbar">
+      <div> <a class="active" href="/home">Home</a></div>
+      <div>
+       <a href="/aircrafts">Aircrafts</a>
+       <a href="/tasks">Maintenance Tasks</a>
+     </div>
+    </div>
+    
+  </div>
+
+<div class="main-container">
+  <div class="filter-container">
+    <div class="centered">
+      <h4 style="padding-bottom: 10px;   color: #a8107d;">Filter By</h4>
+      <label><input type="radio" name="filter" [(ngModel)]="filterType" value="id"> ID</label>
+      <label><input type="radio" name="filter" [(ngModel)]="filterType" value="name"> Name</label>
+      <label><input type="radio" name="filter" [(ngModel)]="filterType" value="serialNumber"> Serial Number</label>
+      <label><input type="radio" name="filter" [(ngModel)]="filterType" value="manufacturer"> Manufacturer</label>
+
+      <div class="input-container">
+  
+        <input *ngIf="showInput" class="search" type="text" [(ngModel)]="filterValue" placeholder="Enter {{ filterType }}..." (keyup)="applyFilter()">
+      </div>
+    </div>
+  </div>
+
+  <div class="table-container">
+    <div class="content">
+      <div class="container--table">
+        <ul class="table--header">
+          <li class="table--header-item aircraftId">Id</li>
+          <li class="table--header-item aircraftName">Name</li>
+          <li class="table--header-item serialNumber">Serial Number</li>
+          <li class="table--header-item manufacturer">Manufacturer</li>
+          <li class="table--header-item manufacturer">Task Details</li> 
+        </ul>
+
+        <div class="table-body">
+          <div class="aircraft--container">
+            <div class="aircraft--item" *ngFor="let item of filteredAircrafts">
+              <div class="aircraft--item-aircraftId">{{item.id}}</div>
+              <div class="aircraft--item-aircraftName">{{item.name}}</div>
+              <div class="aircraft--item-serialNumber">{{item.serialNumber}}</div>
+              <div class="aircraft--item-manufacturer">{{item.manufacturer}}</div>
+              <div>
+                <button class="aircraft--item-button" (click)="showTaskDetails(item.id)">Show Details</button>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

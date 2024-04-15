@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+<div class="container">
+    <div class="title">
+      <img class="image-logo" src="../../assets/images/Screenshot (181).png" width="150px" height="50px">
+    </div>
+    <div class="navbar">
+      <a class="active" href="/home">Home</a>
+      <a href="/aircrafts">Aircrafts</a>
+      <a href="/tasks">Maintenance Tasks</a>
+      <div class="search-container">
+        <input type="text" placeholder="Search by ID..." name="search" [(ngModel)]="searchId" (keyup)="search()">
+        <button type="submit"><i class="fas fa-search"></i></button>
+    </div>
+    </div>
+  </div>
+
+
+  
+  <div class="content">
+
+        <div class="container--table">
+          <ul class="table--header">
+              <li class="table--header-item taskId">Id</li>
+              <li class="table--header-item aircraftId">Aircraft Id</li>
+              <li class="table--header-item taskDescription">Description</li>
+              <li class="table--header-item dueDate">Due Date</li>
+              <li class="table--header-item completedDate">Completed Date</li>
+          </ul>
+       
+      <div class="table-body">
+          <div class="aircraft--container">
+                  <div class="aircraft--item" *ngFor="let item of filteredTaskList">
+                  <div class="aircraft--item-aircraftId">{{item.id}}</div>
+                  <div class="aircraft--item-aircraftId">{{item.aircraft.id}}</div>
+                  <div class="aircraft--item-aircraftName">{{item.description}}</div>
+                  <div class="aircraft--item-serialNumber">{{item.dueDate}}</div>
+                  <div class="aircraft--item-manufacturer">{{item.completedDate}}</div>
+              </div>
+              
+          
+          </div>
+          
+      </div>
+       
+      </div>
+  </div>
